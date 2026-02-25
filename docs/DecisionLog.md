@@ -41,3 +41,14 @@ Track important technical and product decisions in chronological order.
   - More predictable behavior and lower regression risk.
   - Slightly higher short-term implementation overhead.
   - Better long-term maintainability.
+### DEC-003: Lightweight JSON Persistence Prototype Without External JSON Dependency
+- **Date:** 2026-02-25
+- **Status:** Accepted
+- **Context:** The immediate backlog requires a project save/load JSON prototype for voxel grids, while the current bootstrap keeps dependencies minimal.
+- **Options Considered:**
+  - Add a JSON library dependency (e.g., Jackson/Gson)
+  - Implement a constrained, format-specific serializer/parser for the prototype
+- **Decision:** Implement a constrained JSON serializer/parser dedicated to voxel project persistence for the prototype phase.
+- **Consequences:**
+  - Delivers save/load capability quickly with no new dependency setup.
+  - Parser is intentionally narrow and should be replaced or hardened before production-grade import/export.
