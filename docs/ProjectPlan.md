@@ -1,7 +1,9 @@
+
 # Voxel Editor Project Plan (Java + OpenGL)
 
 ## 1. Vision and Scope
 Build a cross-platform voxel model editor with a desktop-first UX, powered by Java for portability and OpenGL for rendering. The initial target is a stable MVP for creating, editing, and exporting voxel assets on Linux and Windows.
+
 
 ## 2. Product Goals
 - Create and edit voxel models with intuitive tools.
@@ -10,6 +12,7 @@ Build a cross-platform voxel model editor with a desktop-first UX, powered by Ja
 - Establish a test-first (TDD) development workflow.
 
 ## 3. Technical Stack
+
 - **Language:** Java 21+
 - **UI:** JavaFX
 - **Rendering:** OpenGL via LWJGL
@@ -23,10 +26,10 @@ Build a cross-platform voxel model editor with a desktop-first UX, powered by Ja
 - **voxeleditor-rendering**: OpenGL abstraction, camera, shaders, mesh generation.
 - **voxeleditor-persistence**: project save/load, import/export adapters.
 - **voxeleditor-tests**: unit/integration tests.
-
 ## 5. Milestones
 
 ### Milestone 1: Foundation
+
 - Create Gradle project structure.
 - Define domain entities (`Voxel`, `VoxelGrid`, `Scene`, `ToolState`).
 - Implement command pipeline and undo/redo contracts.
@@ -34,6 +37,7 @@ Build a cross-platform voxel model editor with a desktop-first UX, powered by Ja
 
 ### Milestone 2: Rendering + Navigation
 - Add OpenGL viewport hosting in JavaFX.
+
 - Implement camera controls (orbit, pan, zoom).
 - Render test scene with a simple voxel mesh.
 - Add rendering contract tests for camera math and mesh generation.
@@ -41,6 +45,7 @@ Build a cross-platform voxel model editor with a desktop-first UX, powered by Ja
 ### Milestone 3: Core Editing Tools
 - Implement voxel placement/removal.
 - Add brush radius and material assignment.
+
 - Add selection and fill tools.
 - Validate behavior via TDD scenarios.
 
