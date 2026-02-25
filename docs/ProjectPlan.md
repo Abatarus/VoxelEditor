@@ -1,7 +1,9 @@
-# Voxel Editor Project Plan (Avalonia + OpenGL)
+
+# Voxel Editor Project Plan (Java + OpenGL)
 
 ## 1. Vision and Scope
-Build a cross-platform voxel model editor with a desktop-first UX, powered by Avalonia for UI and OpenGL for rendering. The initial target is a stable MVP for creating, editing, and exporting voxel assets.
+Build a cross-platform voxel model editor with a desktop-first UX, powered by Java for portability and OpenGL for rendering. The initial target is a stable MVP for creating, editing, and exporting voxel assets on Linux and Windows.
+
 
 ## 2. Product Goals
 - Create and edit voxel models with intuitive tools.
@@ -10,36 +12,40 @@ Build a cross-platform voxel model editor with a desktop-first UX, powered by Av
 - Establish a test-first (TDD) development workflow.
 
 ## 3. Technical Stack
-- **Language:** C# (.NET)
-- **UI:** Avalonia
-- **Rendering:** OpenGL (through an Avalonia-compatible GL control strategy)
-- **Testing:** xUnit (unit + integration), lightweight rendering contract tests where applicable
+
+- **Language:** Java 21+
+- **UI:** JavaFX
+- **Rendering:** OpenGL via LWJGL
+- **Build:** Gradle
+- **Testing:** JUnit 5 (unit + integration), deterministic rendering contract tests where applicable
 
 ## 4. Architecture Outline
-- **VoxelEditor.App**: Avalonia app bootstrap and composition root.
-- **VoxelEditor.UI**: Views, view models, commands, and interaction layer.
-- **VoxelEditor.Core**: Domain model (voxel grid, tools, scene state, undo/redo).
-- **VoxelEditor.Rendering**: OpenGL abstraction, camera, shaders, mesh generation.
-- **VoxelEditor.Persistence**: Project save/load, import/export adapters.
-- **VoxelEditor.Tests**: Unit/integration tests.
-
+- **voxeleditor-app**: app bootstrap and composition root.
+- **voxeleditor-ui**: JavaFX views, controllers, interaction layer.
+- **voxeleditor-core**: domain model (voxel grid, tools, scene state, undo/redo).
+- **voxeleditor-rendering**: OpenGL abstraction, camera, shaders, mesh generation.
+- **voxeleditor-persistence**: project save/load, import/export adapters.
+- **voxeleditor-tests**: unit/integration tests.
 ## 5. Milestones
 
 ### Milestone 1: Foundation
-- Create solution and projects.
+
+- Create Gradle project structure.
 - Define domain entities (`Voxel`, `VoxelGrid`, `Scene`, `ToolState`).
 - Implement command pipeline and undo/redo contracts.
-- Add CI pipeline running tests.
+- Add CI pipeline running tests on Linux + Windows.
 
 ### Milestone 2: Rendering + Navigation
-- Add OpenGL viewport hosting in Avalonia.
+- Add OpenGL viewport hosting in JavaFX.
+
 - Implement camera controls (orbit, pan, zoom).
 - Render test scene with a simple voxel mesh.
 - Add rendering contract tests for camera math and mesh generation.
 
 ### Milestone 3: Core Editing Tools
 - Implement voxel placement/removal.
-- Add brush radius and color/material assignment.
+- Add brush radius and material assignment.
+
 - Add selection and fill tools.
 - Validate behavior via TDD scenarios.
 

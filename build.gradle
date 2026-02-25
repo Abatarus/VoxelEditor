@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.voxeleditor'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    test {
+        java.srcDirs = ['src/test/java']
+    }
+}
+
+tasks.register('runTests', JavaExec) {
+    group = 'verification'
+    description = 'Runs lightweight test suite without external dependencies.'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.voxeleditor.core.TestSuite'
+    dependsOn tasks.testClasses
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('runTests')
+}
