@@ -39,6 +39,20 @@ public final class VoxelGrid {
         return Optional.ofNullable(cells[indexOf(x, y, z)]);
     }
 
+
+    public void forEachFilled(FilledVoxelConsumer consumer) {
+        for (int z = 0; z < depth; z++) {
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    Voxel voxel = cells[x + (y * width) + (z * width * height)];
+                    if (voxel != null) {
+                        consumer.accept(x, y, z, voxel);
+                    }
+                }
+            }
+        }
+    }
+
     public boolean removeVoxel(int x, int y, int z) {
         int index = indexOf(x, y, z);
         if (cells[index] == null) {
@@ -46,6 +60,11 @@ public final class VoxelGrid {
         }
         cells[index] = null;
         return true;
+    }
+
+    @FunctionalInterface
+    public interface FilledVoxelConsumer {
+        void accept(int x, int y, int z, Voxel voxel);
     }
 
     private int indexOf(int x, int y, int z) {
